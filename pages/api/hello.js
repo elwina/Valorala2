@@ -1,7 +1,11 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
 
-export default (req, res) => {
-  // Open Chrome DevTools to step through the debugger!
-  // debugger;
-  res.status(200).json({ name: process.env.DB_HOST });
+export default async (req, res) => {
+  const db = await open({
+    filename: './database.db',
+    driver: sqlite3.Database,
+  });
+  await db.exec('CREATE TABLE tbl (col TEXT)');
+  res.status(200).json({ name: 'sqlite' });
 };
