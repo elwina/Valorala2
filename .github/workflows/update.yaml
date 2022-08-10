@@ -11,7 +11,9 @@ jobs:
               with:
                   node-version: 16
             - name: Init Data
-              run: npm run init
+              run: |
+                  npm install
+                  npm run init
             - name: Commit Files
               uses: EndBug/add-and-commit@v9
               with:
