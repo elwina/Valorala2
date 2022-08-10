@@ -87,6 +87,5 @@ export async function fetch() {
         data.push(txt);
     });
 
-    console.log(data);
     return data;
 }

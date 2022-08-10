@@ -17,7 +17,9 @@ async function init() {
         generateTime: new Date().toISOString(),
         sources: sources,
     };
-    writeFileSync("./data/sources.json", JSON.stringify(re));
+    writeFileSync("./data/sources.json", JSON.stringify(re), {
+        flag: "w",
+    });
 
     const level = process.argv.slice(2);
     fetchAllData(level);
