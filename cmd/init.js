@@ -1,4 +1,5 @@
 import { readdirSync, writeFileSync } from "fs";
+import { fetchAllData } from "./fetch.js";
 
 async function init() {
     const files = readdirSync("./fetch/");
@@ -17,6 +18,7 @@ async function init() {
         sources: sources,
     };
     writeFileSync("./data/sources.json", JSON.stringify(re));
+    fetchAllData();
     console.log("Init " + new Date().toISOString());
 }
 

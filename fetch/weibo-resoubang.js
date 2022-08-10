@@ -88,5 +88,3 @@ export async function fetch() {
 
     return data;
 }
-
-//fetch();
