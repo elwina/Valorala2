@@ -52,6 +52,8 @@ jobs:
               run: |
                   pnpm install --frozen-lockfile
                   pnpm run hyper
+            - name: Push Data Force
+              run: git add data -f
             - name: Commit Files
               uses: EndBug/add-and-commit@v9
               with:
