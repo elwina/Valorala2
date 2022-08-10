@@ -6,7 +6,7 @@ import { wrapper } from "axios-cookiejar-support";
 import * as cheerio from "cheerio";
 
 export const SourceName = "weibo-resoubang";
-export const SourceLevel = "daily";
+export const SourceLevel = 4;
 export const SourceInfo = "新浪微博的热搜榜";
 
 export async function fetch() {

@@ -6,7 +6,13 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "init": "node cmd/init.js"
+        "init": "node cmd/init.js 1",
+        "daily": "node cmd/init.js 1",
+        "medium": "node cmd/init.js 2",
+        "quick": "node cmd/init.js 3",
+        "super": "node cmd/init.js 4",
+        "ultra": "node cmd/init.js 5",
+        "hyper": "node cmd/init.js 6"
     },
     "dependencies": {
         "axios": "^0.27.2",

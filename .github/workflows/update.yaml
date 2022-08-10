@@ -1,5 +1,13 @@
-name: Update/Generate Data
-on: [push]
+name: Update Data
+on:
+    schedule:
+        - cron: "0 8 * * *" # daily
+        - cron: "0 18 * * *" # medium
+        - cron: "0 0,6,12 * * *" # quick
+        - cron: "0 3,9,15,21 * * *" # super
+        - cron: "0 1,2,4,5,7,10,11,13,14,16,17,19,20,22,23 * * *" # ultra
+        - cron: "15,30,45 * * * *" # hyper
+
 jobs:
     generate-data:
         runs-on: ubuntu-latest
@@ -14,10 +22,36 @@ jobs:
               uses: pnpm/action-setup@v2.2.2
               with:
                   version: 6.31.0
-            - name: Init Data
+            - name: Init Data daily
+              if: github.event.schedule == "0 8 * * *"
               run: |
                   pnpm install --frozen-lockfile
-                  pnpm run init
+                  pnpm run daily
+            - name: Init Data medium
+              if: github.event.schedule == "0 18 * * *"
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run medium
+            - name: Init Data quick
+              if: github.event.schedule == "0 0,6,12 * * *"
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run quick
+            - name: Init Data super
+              if: github.event.schedule == "0 3,9,15,21 * * *"
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run super
+            - name: Init Data ultra
+              if: github.event.schedule == "0 1,2,4,5,7,10,11,13,14,16,17,19,20,22,23 * * *"
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run ultra
+            - name: Init Data hyper
+              if: github.event.schedule == "15,30,45 * * * *"
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run hyper
             - name: Commit Files
               uses: EndBug/add-and-commit@v9
               with:

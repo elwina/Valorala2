@@ -18,8 +18,9 @@ async function init() {
         sources: sources,
     };
     writeFileSync("./data/sources.json", JSON.stringify(re));
-    fetchAllData();
-    console.log("Init " + new Date().toISOString());
+
+    const level = process.argv.slice(2);
+    fetchAllData(level);
 }
 
 init();
