@@ -1,13 +1,17 @@
-const https = require('https');
-https.get('https://movie.douban.com/', function (res) {
-  // 分段返回的 自己拼接
-  let html = '';
-  // 有数据产生的时候 拼接
-  res.on('data', function (chunk) {
-    html += chunk;
-  });
-  // 拼接完成
-  res.on('end', function () {
-    console.log(html);
-  });
-});
+import { readFileSync } from "fs";
+import { record } from "./record.js";
+
+export async function fetchData() {
+    const listRawdata = readFileSync("./data/sources.json");
+    const list = JSON.parse(listRawdata);
+    const sources = list.sources;
+    for (const item of sources) {
+        import("../fetch/" + item.name + ".js").then(async (mo) => {
+            const data = await mo.fetch();
+            record(item.name, data);
+        });
+    }
+    return "ok";
+}
+
+fetchData();

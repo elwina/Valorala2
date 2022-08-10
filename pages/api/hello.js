@@ -1,3 +1,7 @@
 export default async (req, res) => {
-  res.status(200).json({ name: 'sqlite' });
+    await import("/cmd/update.js").then(async (mo) => {
+        await mo.fetchData();
+    });
+
+    res.status(200).json({ name: "ok" });
 };
