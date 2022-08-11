@@ -1,7 +1,8 @@
 import { readFileSync } from "fs";
+import { DataPath } from "./config.js";
 
 export async function fetchData(name) {
-    const listRawdata = readFileSync("./data/sources.json");
+    const listRawdata = readFileSync(DataPath + "/sources.json");
     const list = JSON.parse(listRawdata);
     const sources = list.sources;
     if (sources.indexOf(name) != -1) {
