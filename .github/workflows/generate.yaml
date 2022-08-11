@@ -41,13 +41,9 @@ jobs:
                   git config --global user.email elwina@outlook.com
                   git config --global user.name elwina
                   git remote set-url origin https://elwina:${{ secrets.PWT }}@github.com/elwina/Valorala2-data.git
-                  git commit -m "generated"
-                  git push -u origin main -force_with_lease
-            - name: Push changes
-              uses: ad-m/github-push-action@master
-              with:
-                  repository: elwina/Valorala2-data
-                  github_token: ${{ secrets.PWT }}
-                  github_url: https://github.com/elwina/Valorala2-data.git
-                  branch: main
-                  force_with_lease: true
+                  git commit -m "Generated data"
+                  git push origin main -force_with_lease
+                  cd ../../
+                  git submodule update
+                  git commit -m "Data"
+                  git push origin main
