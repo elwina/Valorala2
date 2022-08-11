@@ -36,6 +36,7 @@ jobs:
             - name: Commit Data Files
               run: |
                   cd ./public/Valorala2-data
+                  git checkout main
                   git add .
                   git config --global user.email elwina@outlook.com
                   git config --global user.name elwina
@@ -43,6 +44,7 @@ jobs:
                   git commit -m "Generated data"
                   git push origin main -force_with_lease
                   cd ../../
+                  git checkout main
                   git submodule update
                   git commit -m "Data"
                   git push origin main
