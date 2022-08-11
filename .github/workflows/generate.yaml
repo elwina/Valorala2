@@ -38,11 +38,11 @@ jobs:
                   cd ./public/Valorala2-data
                   git checkout main
                   git add .
-                  git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-                  git config  user.name github-actions[bot]
+                  git config user.email elwina@outlook.com
+                  git config user.name elwina
                   git remote set-url origin https://github.com/elwina/Valorala2-data.git
                   git commit -m "generated"
-            #                  git push -u origin main -force_with_lease
+                  git push -u origin main -force_with_lease
             - name: Push changes
               uses: ad-m/github-push-action@master
               with:
