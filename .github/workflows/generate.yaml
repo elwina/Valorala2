@@ -34,3 +34,5 @@ jobs:
                   git config github.user elwina
                   git config github.token ${{ secrets.PET }}
                   git push origin HEAD:main
+                  cd ../../
+                  git push
