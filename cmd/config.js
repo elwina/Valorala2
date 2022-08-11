@@ -1,1 +1,1 @@
-export const DataPath = "./Valorala2-data";
+export const DataPath = "./public/Valorala2-data";

@@ -1,9 +1,8 @@
 import { readFileSync } from "fs";
 import { DataPath } from "./config.js";
+import list from "../public/Valorala2-data/sources.json";
 
 export async function fetchData(name) {
-    const listRawdata = readFileSync(DataPath + "/sources.json");
-    const list = JSON.parse(listRawdata);
     const sources = list.sources;
     if (sources.indexOf(name) != -1) {
         throw new Error("没有该参数");
