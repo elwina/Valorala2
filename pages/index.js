@@ -1,4 +1,5 @@
 import { readFileSync } from "fs";
+import { DataPath } from "../cmd/config.js";
 
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
@@ -30,7 +31,7 @@ export default function Home({ sources }) {
 }
 
 export async function getStaticProps() {
-    const listRawdata = readFileSync("./data/sources.json");
+    const listRawdata = readFileSync(DataPath + "/sources.json");
     const list = JSON.parse(listRawdata);
     const sources = list.sources;
     return {
