@@ -31,4 +31,6 @@ jobs:
                   git config user.email github-actions@github.com
                   git add .
                   git commit -m "generated"
+                  git config github.user elwina
+                  git config github.token ${{ github.token }}
                   git push origin HEAD:main
