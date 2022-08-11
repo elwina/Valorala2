@@ -14,7 +14,7 @@ jobs:
               with:
                   repository: elwina/Valorala2-data
                   path: ./public/Valorala2-data
-                  persist-credentials: true
+                  persist-credentials: false
 
             - name: Setup Nodejs
               uses: actions/setup-node@v3
