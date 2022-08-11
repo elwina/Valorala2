@@ -8,7 +8,6 @@ jobs:
               uses: actions/checkout@v3
               with:
                   persist-credentials: false
-            # #                 submodules: recursive
             - name: Checkout Data Repo
               uses: actions/checkout@v3
               with:
@@ -47,7 +46,6 @@ jobs:
                   git push --force
             - name: Commit Main
               run: |
-                  cd ../../
                   git checkout main
                   git submodule update
                   git commit -m "Data"
