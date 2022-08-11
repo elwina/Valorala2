@@ -38,9 +38,9 @@ jobs:
                   cd ./public/Valorala2-data
                   git checkout main
                   git add .
-                  # git config user.email elwina@outlook.com
-                  # git config user.name elwina
-                  # git remote set-url origin https://github.com/elwina/Valorala2-data.git
+                  git config --global user.email elwina@outlook.com
+                  git config --global user.name elwina
+                  git remote set-url origin https://github.com/elwina/Valorala2-data.git
                   git commit -m "generated"
                   git push -u origin main -force_with_lease
             - name: Push changes
