@@ -1,62 +1,84 @@
-# name: Update Data
-# on:
-#     schedule:
-#         - cron: "0 8 * * *" # daily
-#         - cron: "0 18 * * *" # medium
-#         - cron: "0 0,6,12 * * *" # quick
-#         - cron: "0 3,9,15,21 * * *" # super
-#         - cron: "0 1,2,4,5,7,10,11,13,14,16,17,19,20,22,23 * * *" # ultra
-#         - cron: "15,30,45 * * * *" # hyper
+name: Update Data
+on:
+    schedule:
+        - cron: "1 0 * * *" # daily
+        - cron: "1 10 * * *" # medium
+        - cron: "1 16,22,4 * * *" # quick
+        - cron: "1 19,1,7,13 * * *" # super
+        - cron: "1 17,18,20,21,23,2,3,5,6,8,9,10,12,14,15 * * *" # ultra
+        - cron: "15,30,45 * * * *" # hyper
 
-# jobs:
-#     generate-data:
-#         runs-on: ubuntu-latest
-#         steps:
-#             - name: Checkout Code
-#               uses: actions/checkout@v3
-#             - name: Setup Nodejs
-#               uses: actions/setup-node@v3
-#               with:
-#                   node-version: 16
-#             - name: Install pnpm
-#               uses: pnpm/action-setup@v2.2.2
-#               with:
-#                   version: 6.31.0
-#             - name: Init Data daily
-#               if: github.event.schedule == "0 8 * * *"
-#               run: |
-#                   pnpm install --frozen-lockfile
-#                   pnpm run daily
-#             - name: Init Data medium
-#               if: github.event.schedule == "0 18 * * *"
-#               run: |
-#                   pnpm install --frozen-lockfile
-#                   pnpm run medium
-#             - name: Init Data quick
-#               if: github.event.schedule == "0 0,6,12 * * *"
-#               run: |
-#                   pnpm install --frozen-lockfile
-#                   pnpm run quick
-#             - name: Init Data super
-#               if: github.event.schedule == "0 3,9,15,21 * * *"
-#               run: |
-#                   pnpm install --frozen-lockfile
-#                   pnpm run super
-#             - name: Init Data ultra
-#               if: github.event.schedule == "0 1,2,4,5,7,10,11,13,14,16,17,19,20,22,23 * * *"
-#               run: |
-#                   pnpm install --frozen-lockfile
-#                   pnpm run ultra
-#             - name: Init Data hyper
-#               if: github.event.schedule == "15,30,45 * * * *"
-#               run: |
-#                   pnpm install --frozen-lockfile
-#                   pnpm run hyper
-#             - name: Push Data Force
-#               run: git add data -f
-#             - name: Commit Files
-#               uses: EndBug/add-and-commit@v9
-#               with:
-#                   message: Show GitHub Actions logo
-#                   committer_name: GitHub Actions
-#                   committer_email: actions@github.com
+jobs:
+    generate-data:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
+            - name: Checkout Data Repo
+              uses: actions/checkout@v3
+              with:
+                  repository: elwina/Valorala2-data
+                  path: ./public/Valorala2-data
+                  persist-credentials: false
+
+            - name: Setup Nodejs
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2.2.2
+              with:
+                  version: 6.31.0
+            - name: Submodule
+              run: |
+                  cd ./public/Valorala2-data
+                  git checkout main
+
+            - name: Init Data daily
+              if: github.event.schedule == '1 0 * * *'
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run daily
+            - name: Init Data medium
+              if: github.event.schedule == '1 10 * * *'
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run medium
+            - name: Init Data quick
+              if: github.event.schedule == '1 16,22,4 * * *'
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run quick
+            - name: Init Data super
+              if: github.event.schedule == '1 19,1,7,13 * * *'
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run super
+            - name: Init Data ultra
+              if: github.event.schedule == '1 17,18,20,21,23,2,3,5,6,8,9,10,12,14,15 * * *'
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run ultra
+            - name: Init Data hyper
+              if: github.event.schedule == '15,30,45 * * * *'
+              run: |
+                  pnpm install --frozen-lockfile
+                  pnpm run hyper
+
+            - name: Commit Data Files
+              run: |
+                  cd ./public/Valorala2-data
+                  git config --global user.email elwina@outlook.com
+                  git config --global user.name elwina
+                  git remote set-url origin https://elwina:${{ secrets.PWT }}@github.com/elwina/Valorala2-data.git
+                  git commit -a -m "[skip actions]Generated data"
+                  git push --force
+            - name: Commit Main
+              run: |
+                  git checkout main
+                  git submodule update
+                  git remote set-url origin https://elwina:${{ secrets.PWT }}@github.com/elwina/Valorala2.git
+                  git commit -a -m "[skip actions]Generated data"
+                  git push origin main
