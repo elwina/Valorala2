@@ -1,5 +1,3 @@
-import { readFileSync } from "fs";
-import { DataPath } from "./config.js";
 import list from "../public/Valorala2-data/sources.json";
 
 export async function fetchData(name) {

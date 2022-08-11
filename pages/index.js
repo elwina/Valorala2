@@ -1,10 +1,12 @@
-import { readFileSync } from "fs";
-import { DataPath } from "../cmd/config.js";
+// import { readFileSync } from "fs";
+// import { DataPath } from "../cmd/config.js";
+import list from "../public/Valorala2-data/sources.json";
 
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-export default function Home({ sources }) {
+export default function Home() {
+    const sources = list.sources;
     const listItems = sources.map((sources) => <li>{sources.name}</li>);
 
     return (
@@ -30,13 +32,13 @@ export default function Home({ sources }) {
     );
 }
 
-export async function getStaticProps() {
-    const listRawdata = readFileSync(DataPath + "/sources.json");
-    const list = JSON.parse(listRawdata);
-    const sources = list.sources;
-    return {
-        props: {
-            sources,
-        },
-    };
-}
+// export async function getStaticProps() {
+//     const listRawdata = readFileSync(DataPath + "/sources.json");
+//     const list = JSON.parse(listRawdata);
+//     const sources = list.sources;
+//     return {
+//         props: {
+//             sources,
+//         },
+//     };
+// }

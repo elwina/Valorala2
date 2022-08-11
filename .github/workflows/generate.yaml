@@ -6,6 +6,8 @@ jobs:
         steps:
             - name: Checkout Code
               uses: actions/checkout@v3
+              with:
+                  submodules: recursive
             - name: Setup Nodejs
               uses: actions/setup-node@v3
               with:
@@ -14,17 +16,14 @@ jobs:
               uses: pnpm/action-setup@v2.2.2
               with:
                   version: 6.31.0
-            - name: Make Dir
-              run: mkdir data
             - name: Init Data
               run: |
                   pnpm install --frozen-lockfile
                   pnpm run init
-            - name: Push Data Force
-              run: git add data -f
             - name: Commit Files
               uses: EndBug/add-and-commit@v9
               with:
-                  message: Show GitHub Actions logo
+                  cwd: "./public/Valorala2-data"
+                  message: Update Data
                   committer_name: GitHub Actions
                   committer_email: actions@github.com
