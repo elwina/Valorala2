@@ -21,6 +21,7 @@ jobs:
                   pnpm install --frozen-lockfile
                   pnpm run init
             - name: Commit Data Files
+              uses: actions/checkout@v3
               run: |
                   cd ./public/Valorala2-data
                   git config user.name github-actions
