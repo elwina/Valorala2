@@ -5,11 +5,11 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import "antd/dist/antd.css";
 import { Layout, Divider } from "antd";
-import MyHeader from "./header";
+import MyHeader from "../components/header";
 import { Card, Descriptions } from "antd";
 import { Row, Col } from "antd";
 import { List, Typography, Space, Tag } from "antd";
-import MyCard from "./card";
+import MyCard from "../components/card";
 const { Header, Content, Footer } = Layout;
 const { Text, Link, Title, Paragraph } = Typography;
 
