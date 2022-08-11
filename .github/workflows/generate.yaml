@@ -24,6 +24,6 @@ jobs:
               uses: EndBug/add-and-commit@v9
               with:
                   cwd: "./public/Valorala2-data"
-                  message: Update Data
+                  message: Auto Update Data
                   committer_name: GitHub Actions
                   committer_email: actions@github.com
