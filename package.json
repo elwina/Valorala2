@@ -4,7 +4,7 @@
     "type": "module",
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
+        "build": "git submodule init&git submodule update&next build",
         "start": "next start",
         "init": "node cmd/init.js 1",
         "daily": "node cmd/init.js 1",
