@@ -34,5 +34,6 @@ jobs:
             - name: Push changes
               uses: ad-m/github-push-action@master
               with:
+                  repository: elwina/Valorala2-data
                   github_token: ${{ secrets.PWT }}
                   branch: ${{ github.ref }}
