@@ -37,7 +37,7 @@ jobs:
                   git remote set-url origin https://github.com/elwina/Valorala2-data.git
                   git add .
                   git commit -m "generated"
-                  git push -u origin master
+                  git push -u origin main -force_with_lease
             - name: Push changes
               uses: ad-m/github-push-action@master
               with:
