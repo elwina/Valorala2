@@ -41,3 +41,4 @@ jobs:
                   repository: elwina/Valorala2-data
                   github_token: ${{ secrets.PWT }}
                   branch: main
+                  force_with_lease: true
