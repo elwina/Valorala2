@@ -1,9 +1,11 @@
 import { readFileSync } from "fs";
 import { record } from "./record.js";
 import { DataPath } from "./config.js";
-import list from "../public/Valorala2-data/sources.json";
 
 export async function fetchAllData(level = 1) {
+    const listRawdata = readFileSync(DataPath + "/sources.json");
+    const list = JSON.parse(listRawdata);
+
     const sources = list.sources.filter((ele) => ele.level >= level);
 
     for (const item of sources) {
