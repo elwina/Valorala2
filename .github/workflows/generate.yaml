@@ -1,5 +1,8 @@
 name: Generate Data
-on: [push]
+on:
+    push:
+        paths-ignore:
+            - "public/"
 jobs:
     generate-data:
         runs-on: ubuntu-latest
