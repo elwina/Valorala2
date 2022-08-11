@@ -32,5 +32,5 @@ jobs:
                   git add .
                   git commit -m "generated"
                   git config github.user elwina
-                  git config github.token ${{ github.token }}
+                  git config github.token ${{ secrets.PET }}
                   git push origin HEAD:main
