@@ -39,4 +39,4 @@ jobs:
               with:
                   repository: elwina/Valorala2-data
                   github_token: ${{ secrets.PWT }}
-                  branch: ${{ github.ref }}
+                  branch: main
