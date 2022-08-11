@@ -28,6 +28,7 @@ jobs:
               run: |
                   cd ./public/Valorala2-data
                   git checkout main
+                  cd ../../
 
             - name: Init Data
               run: |
@@ -35,6 +36,7 @@ jobs:
                   pnpm run init
             - name: Commit Data Files
               run: |
+                  cd ./public/Valorala2-data
                   git status
                   git add .
                   git config --global user.email elwina@outlook.com
