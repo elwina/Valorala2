@@ -30,6 +30,7 @@ jobs:
                   git submodule update
                   cd ./public/Valorala2-data
                   git checkout main
+                  git pull
 
             - name: Init Data
               run: |
