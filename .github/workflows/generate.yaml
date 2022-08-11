@@ -9,12 +9,12 @@ jobs:
               with:
                   persist-credentials: false
             # #                 submodules: recursive
-            # - name: Checkout Data Repo
-            #   uses: actions/checkout@v3
-            #   with:
-            #       repository: elwina/Valorala2-data
-            #       path: ./public/Valorala2-data
-            #       persist-credentials: false
+            - name: Checkout Data Repo
+              uses: actions/checkout@v3
+              with:
+                  repository: elwina/Valorala2-data
+                  path: ./public/Valorala2-data
+                  persist-credentials: false
 
             - name: Setup Nodejs
               uses: actions/setup-node@v3
@@ -26,11 +26,8 @@ jobs:
                   version: 6.31.0
             - name: Submodule
               run: |
-                  git submodule init
-                  git submodule update
                   cd ./public/Valorala2-data
                   git checkout main
-                  git pull
 
             - name: Init Data
               run: |
@@ -44,6 +41,8 @@ jobs:
                   git remote set-url origin https://elwina:${{ secrets.PWT }}@github.com/elwina/Valorala2-data.git
                   git commit -m "Generated data"
                   git push --force
+            - name: Commit Main
+              run: |
                   cd ../../
                   git checkout main
                   git submodule update
