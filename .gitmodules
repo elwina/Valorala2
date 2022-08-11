@@ -1,6 +1,3 @@
-[submodule "Valorala2-data"]
-	path = Valorala2-data
-	url = https://github.com/elwina/Valorala2-data.git
 [submodule "public/Valorala2-data"]
 	path = public/Valorala2-data
 	url = https://github.com/elwina/Valorala2-data.git
