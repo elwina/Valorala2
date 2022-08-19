@@ -45,7 +45,6 @@ jobs:
                   git push --force
             - name: Commit Main
               run: |
-                  git checkout main
                   git submodule update
                   git remote set-url origin https://elwina:${{ secrets.PWT }}@github.com/elwina/Valorala2.git
                   git add *
