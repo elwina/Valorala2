@@ -40,6 +40,7 @@ jobs:
                   git config --global user.email elwina@outlook.com
                   git config --global user.name elwina
                   git remote set-url origin https://elwina:${{ secrets.PWT }}@github.com/elwina/Valorala2-data.git
+                  git add *
                   git commit -a -m "[skip actions]Generated data"
                   git push --force
             - name: Commit Main
@@ -47,5 +48,6 @@ jobs:
                   git checkout main
                   git submodule update
                   git remote set-url origin https://elwina:${{ secrets.PWT }}@github.com/elwina/Valorala2.git
+                  git add *
                   git commit -a -m "[skip actions]Generated data"
                   git push origin main
